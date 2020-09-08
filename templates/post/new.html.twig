@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block scripts %}
+    #permet de garder ce qu'il y a dans block parent
+    {{ parent() }}
+    <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create( document.querySelector( '#form_content' ) );
+    </script>
+    {# -- Dropify ------------------ #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous"></script>
+    <script>
+        $('.dropify').dropify({
+            messages: {
+                default: 'Glissez-d&eacute;posez un fichier ici ou cliquez',
+                replace: 'Glissez-d&eacute;posez un fichier ou cliquez pour remplacer',
+                remove:  'Supprimer',
+                error:   'D&eacute;sol&eacute;, le fichier est trop volumineux'
+            }
+        });
+    </script>
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <h3 class="my-4 text-center">
+                    Rédiger une annonce
+                </h3>
+                {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
