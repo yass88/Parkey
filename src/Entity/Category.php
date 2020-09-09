@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,10 +30,15 @@ class Category
     private $alias;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Parking::class, inversedBy="categories")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity=Parking::class, mappedBy="category")
      */
-    private $parking;
+    private $parkings;
+
+    public function __construct()
+    {
+        $this->parkings = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -62,15 +69,35 @@ class Category
         return $this;
     }
 
-    public function getParking(): ?Parking
+    /**
+     * @return Collection|Parking[]
+     */
+    public function getParkings(): Collection
     {
-        return $this->parking;
+        return $this->parkings;
     }
 
-    public function setParking(?Parking $parking): self
+    public function addParking(Parking $parking): self
     {
-        $this->parking = $parking;
+        if (!$this->parkings->contains($parking)) {
+            $this->parkings[] = $parking;
+            $parking->setCategory($this);
+        }
 
         return $this;
     }
+
+    public function removeParking(Parking $parking): self
+    {
+        if ($this->parkings->contains($parking)) {
+            $this->parkings->removeElement($parking);
+            // set the owning side to null (unless already changed)
+            if ($parking->getCategory() === $this) {
+                $parking->setCategory(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

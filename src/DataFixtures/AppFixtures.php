@@ -2,6 +2,9 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Booking;
+use App\Entity\Category;
+use App\Entity\Images;
 use App\Entity\Parking;
 use App\Entity\Post;
 use App\Entity\User;
@@ -20,7 +23,7 @@ class AppFixtures extends Fixture
             ->setLastname('Chaour')
             ->setEmail('ch@gmail.com')
             ->setPassword('test')
-            ->setRoles(['ROLE_JOURNALIST'])
+            ->setRoles(['ROLE_USER'])
             ->setCreatedAt(new \DateTime())
             ->setBirthday(new \DateTime())
             ->setAvatar('test.png')
@@ -33,9 +36,11 @@ class AppFixtures extends Fixture
         ;
 
         $manager->persist($user);
-        $manager->flush();
 
         # Category
+        $category = new Category();
+        $category ->setTitle('Title')
+                  ->setAlias('Alias');
 
         # Post
         for ($i = 0; $i < 6; $i++){
@@ -64,14 +69,31 @@ class AppFixtures extends Fixture
                 ->setCreatedAt(new \DateTime())
                 ->setUpdatedAt(new \DateTime());
 
-            //image
-            // booking
+            $image = new Images();
+            $image ->settitle('Title'.$i)
+                ->setcreatedAt(new \DateTime())
+                ->setUpdatedAt(new \DateTime());
+
+            $booking = new Booking();
+            $booking->setStartDate(new \DateTime())
+                    ->setEndDate(new \DateTime())
+                    ->setPrice(15)
+                    ->setCreatedAt(new \DateTime())
+                    ->setAvailability(new \DateTime())
+                    ->setAddress('Address'.$i);
+
+
 
             $manager->persist($parking);
             $manager->persist($post);
-        }
+            $manager->persist($image);
+            $manager->persist($booking);
+            $manager->persist($category);
 
+        }
 
         $manager->flush();
     }
+
+    
 }

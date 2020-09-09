@@ -1,9 +1,9 @@
 <div class="card" style="width: 18rem;">
-    <img src="{{ asset('assets/images/parking_1.jpg') }}" class="card-img-top" alt="...">
+    <img src="{{ asset('assets/images/parking_1.jpg') }}" class="card-img-top" alt="{{ post.alias }}">
     <div class="card-body">
-        <h5 class="card-title">Title</h5>
-        <p>Address</p>
-        <p>Prix</p>
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p>{{ post.address }}</p>
+
     </div>
     <ul>
         <li>Voiture icones</li>
