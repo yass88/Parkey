@@ -23,7 +23,8 @@
 {% endblock %}
 
 
-{% block content %}
+{% block body %}
+    {% include 'components/_nav.html.twig' %}
     <div class="container">
         <div class="row">
             <div class="col-8 mx-auto">
@@ -31,7 +32,9 @@
                     Rédiger une annonce
                 </h3>
                 {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
+
             </div>
         </div>
     </div>
+    {% include 'components/_footer.html.twig' %}
 {% endblock %}

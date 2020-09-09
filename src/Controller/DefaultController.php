@@ -4,10 +4,18 @@
 namespace App\Controller;
 
 
+use App\Entity\Category;
+use App\Entity\Parking;
 use App\Entity\Post;
 use App\Entity\User;
+use App\Post\PostParking;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -16,6 +24,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class DefaultController extends AbstractController
 {
@@ -41,41 +50,85 @@ class DefaultController extends AbstractController
      */
     public function newPost(Request $request, SluggerInterface $slugger)
     {
-        $post = new Post();
+        $postParking = new PostParking();
 
-        $post->setUser($this->getUser());
-
-        $form = $this->createFormBuilder($post)
+        $form = $this->createFormBuilder($postParking)
+            // Post
 
             ->add('title', TextType::class, [
-               'label' => true
+                'label' => 'Titre'
             ])
 
             ->add('address', TextType::class, [
-                'label' => true
+                'label' => 'adresse'
             ])
 
             ->add('price_hour', NumberType::class, [
-                'label' => true
+                'label' => 'Location à l\'heure'
             ])
 
             ->add('price_day', NumberType::class, [
-                'label' => true
+                'label' => 'Location au jour'
             ])
 
             ->add('price_month', NumberType::class, [
-                'label' => true
+                'label' => 'Location au mois'
             ])
 
             ->add('content', TextType::class, [
-                'label' => true
+                'label' => 'Description de votre annonce'
             ])
 
+
+            ->add('image', FileType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'dropify'
+                ]
+            ])
+
+            ->add('availability', DateType::class, [
+                'label' => 'Disponiilité'
+            ])
+
+
+            //Parking
+
+            ->add('largeur', NumberType::class, [
+                'label' => 'largeur'
+            ])
+
+            ->add('categorie', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'title'
+        ])
+
+            ->add('longueur', NumberType::class, [
+                'label' => 'longueur'
+            ])
+
+            ->add('hauteur', NumberType::class, [
+                'label' => 'hauteur'
+            ])
+
+            ->add('guard', CheckboxType::class, [
+                'label' => 'guard'
+            ])
+
+            ->add('camera', CheckboxType::class, [
+                'label' => 'camera'
+            ])
+
+            ->add('covered', CheckboxType::class, [
+                'label' => 'covered'
+            ])
+
+            ->add('locked', CheckboxType::class, [
+                'label' => 'locked'
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Publier mon annonce'
             ])
-
-            # Dispo / avability
 
             ->getForm();
 
@@ -85,11 +138,35 @@ class DefaultController extends AbstractController
             # Vérif données soumise si valide
             if($form->isSubmitted() && $form->isValid())
             {
-                $post->setAlias(
-                    $slugger->slug(
-                        $post->getTitle()
-                    )
-                );
+
+                #dd($postParking); # TODO a supprimer pour continuer
+                $parking = new Parking();
+                $parking->setCategory($postParking->categorie);
+                $parking->setlargeur($postParking->largeur);
+                $parking->setLongueur($postParking->longueur);
+                $parking->setHauteur($postParking->hauteur);
+                $parking->setGuard($postParking->guard);
+                $parking->setCamera($postParking->camera);
+                $parking->setCovered($postParking->covered);
+                $parking->setLocked($postParking->locked);
+                $parking->setCreatedAt($postParking->createdAt);
+                $parking->setUpdatedAt($postParking->updatedAt);
+
+
+                $post = new Post();
+                $post->setTitle($postParking->title);
+                $post->setAlias($slugger->slug($postParking->title));
+                $post->setParkings($parking);
+                $post->setContent($postParking->content);
+                $post->setImage($postParking->image);
+                $post->setAvailability($postParking->availability);
+                $post->setAddress($postParking->address);
+                $post->setPriceDay($postParking->price_day);
+                $post->setPriceHour($postParking->price_hour);
+                $post->setPriceMonth($postParking->price_month);
+                $post->setCreatedAt($postParking->createdAt);
+                $post->setUpdatedAt($postParking->updatedAt);
+                $post->setUser($this->getUser());
 
                 # Upload image
                 /** @var UploadedFile $imageFile */
@@ -112,10 +189,10 @@ class DefaultController extends AbstractController
                 // instead of its contents
                 $post->setImage($newFileName);
 
-                # Sauvegarde des données
-                $save = $this->getDoctrine()->getManager();
-                $save->persist($post);
-                $save->flush();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($parking);
+                $em->persist($post);
+                $em->flush();
 
                 # Notif Flash sur session
                 $this->addFlash('notice',
@@ -123,8 +200,7 @@ class DefaultController extends AbstractController
 
                 # Redirection
                 #TODO:: Redirection vers page de l'annonce
-                return $this->redirectToRoute('default/home.html.twig');
-
+                return $this->redirectToRoute('home');
 
             }
 
@@ -134,4 +210,10 @@ class DefaultController extends AbstractController
         ]);
 
     }
+
+
+
 }
+
+
+

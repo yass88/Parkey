@@ -36,12 +36,11 @@ class AppFixtures extends Fixture
         ;
 
         $manager->persist($user);
-        $manager->flush();
 
         # Category
         $category = new Category();
-        $category ->setTitle('Title'.$i);
-        $category ->setAlias('Alias'.$i);
+        $category ->setTitle('Title')
+                  ->setAlias('Alias');
 
         # Post
         for ($i = 0; $i < 6; $i++){
@@ -76,12 +75,12 @@ class AppFixtures extends Fixture
                 ->setUpdatedAt(new \DateTime());
 
             $booking = new Booking();
-            $booking ->setStartDate(new \DateTime());
-            $booking ->setEndDate(new \DateTime());
-            $booking->setPrice(15);
-            $booking->setCreatedAt(new \DateTime());
-            $booking->setAvailability(new \DateTime());
-            $booking->setAddress('Address'.$i);
+            $booking->setStartDate(new \DateTime())
+                    ->setEndDate(new \DateTime())
+                    ->setPrice(15)
+                    ->setCreatedAt(new \DateTime())
+                    ->setAvailability(new \DateTime())
+                    ->setAddress('Address'.$i);
 
 
 
@@ -93,7 +92,8 @@ class AppFixtures extends Fixture
 
         }
 
-
         $manager->flush();
     }
+
+    
 }
