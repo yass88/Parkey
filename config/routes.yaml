@@ -1,3 +1,11 @@
 home:
     path: /
     controller: App\Controller\DefaultController::home
+
+newPost:
+    path: /nouvelle/location
+    controller: App\Controller\DefaultController::newPost
+
+annonce:
+    path: /annonce/{alias}
+    controller: App\Controller\DefaultController::annonce

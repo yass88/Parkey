@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'components/_nav.html.twig' %}
+
+    {% block content %}
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.address }}</p>
+        <img src="{{ asset('uploads/posts/' ~ post.image) }}" class="card-img-top" alt="{{ post.alias }}">
+
+
+        # User
+        <img src="{{ asset('uploads/posts/' ~ post.user.avatar) }}">
+        <p>{{ post.user.nickname }}</p>
+
+        <p> {{ post.parkings.createdAt|date("m/d/Y H:i:s", "Europe/Paris") }}</p>
+
+        <p> {{ post.parkings.updatedAt|date("m/d/Y H:i:s", "Europe/Paris") }}</p>
+
+
+        # caractèristiques véhicule
+        <h3>Véhicules conseillés</h3>
+        <p>{{ post.parkings.category.title }}</p>
+
+        <h3>A propos de {{ post.title }}</h3>
+        <p>{{ post.content }}</p>
+
+        <h3>Dimensions</h3>
+        <p>{{ post.parkings.largeur }}</p>
+        <p>{{ post.parkings.longueur }}</p>
+        <p>{{ post.parkings.hauteur }}</p>
+
+        <h3>Caractéristiques</h3>
+        <p>{{ post.parkings.guard }}</p>
+        <p>{{ post.parkings.camera }}</p>
+        <p>{{ post.parkings.covered }}</p>
+        <p>{{ post.parkings.locked }}</p>
+
+        <h3>Voir sur la carte</h3>
+
+
+
+        <h3>Ça pourrait vous plaire</h3>
+
+
+
+
+
+    {% endblock %}
+
+
+    {% include 'components/_footer.html.twig' %}
+{% endblock %}
