@@ -1,16 +1,19 @@
+
 <div class="card" style="width: 18rem;">
-    <img src="{{ asset('uploads/posts/' ~ post.image())  }}" class="card-img-top" >
+    <img src="{{ asset('uploads/posts/' ~ post.image) }}" class="card-img-top" alt="{{ post.alias }}">
     <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
+
         <p>{{ post.address }}</p>
 
-    </div>
-    <ul>
-        <li>Voiture icones</li>
-        <li>Moto icones</li>
-        <li>Camion ....</li>
-    </ul>
     <div class="card-body">
-        <a href="#" class="card-link">Voir l'annonce</a>
+        <p>{{ post.parkings.category.title }}</p>
+    </div>
+
+    </div>
+    <div class="card-body">
+        <a href="{{ path('default_annonce', {
+            'alias' : post.alias
+            }) }}" class="card-link">Voir l'annonce</a>
     </div>
 </div>
