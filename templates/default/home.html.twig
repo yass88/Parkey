@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'components/_nav.html.twig' %}
+    <div>
+        <h1>Test</h1>
+        <div class="row">
+        {% for post in posts %}
+            <div class="col-4 mt-3">
+                {% include'components/_card.html.twig' %}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+        <h6 style="text-align: center">Suivez nous</h6>
+        <div style="text-align: center; margin-bottom: 1%; margin-top: 1%">
+            <!-- Links -->
+            <!-- Facebook -->
+            <a class="fb-ic">
+                <i class="fab fa-facebook-f white-text mr-4"> </i>
+            </a>
+            <!-- Twitter -->
+            <a class="tw-ic">
+                <i class="fab fa-twitter white-text mr-4"> </i>
+            </a>
+            <!-- Google +-->
+            <a class="gplus-ic">
+                <i class="fab fa-google-plus-g white-text mr-4"> </i>
+            </a>
+            <!--Linkedin -->
+            <a class="li-ic">
+                <i class="fab fa-linkedin-in white-text mr-4"> </i>
+            </a>
+            <!--Instagram-->
+            <a class="ins-ic">
+                <i class="fab fa-instagram white-text"> </i>
+            </a>
+        </div>
+    </div>
+
+
+    {% include 'components/_footer.html.twig' %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

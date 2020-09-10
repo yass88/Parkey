@@ -52,7 +52,16 @@ class Post
     /**
      * @ORM\Column(type="float")
      */
-    private $price;
+    private $priceHour;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $priceDay;
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $priceMonth;
 
     /**
      * @ORM\Column(type="datetime")
@@ -169,18 +178,6 @@ class Post
         return $this;
     }
 
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -289,5 +286,53 @@ class Post
         $this->parkings = $parkings;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPriceHour()
+    {
+        return $this->priceHour;
+    }
+
+    /**
+     * @param mixed $priceHour
+     */
+    public function setPriceHour($priceHour): void
+    {
+        $this->priceHour = $priceHour;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPriceDay()
+    {
+        return $this->priceDay;
+    }
+
+    /**
+     * @param mixed $priceDay
+     */
+    public function setPriceDay($priceDay): void
+    {
+        $this->priceDay = $priceDay;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPriceMonth()
+    {
+        return $this->priceMonth;
+    }
+
+    /**
+     * @param mixed $priceMonth
+     */
+    public function setPriceMonth($priceMonth): void
+    {
+        $this->priceMonth = $priceMonth;
     }
 }
