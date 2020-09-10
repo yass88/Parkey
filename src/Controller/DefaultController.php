@@ -8,6 +8,7 @@ use App\Entity\Category;
 use App\Entity\Parking;
 use App\Entity\Post;
 use App\Entity\User;
+use App\Form\PostForm;
 use App\Post\PostParking;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -22,6 +23,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -210,6 +212,36 @@ class DefaultController extends AbstractController
         ]);
 
     }
+
+    /**
+     * Modification des données d'un utilisateur
+     * @Route("/post/edit/{id}", name="user_post_edit", methods={"GET|POST"})
+     * @param Request $request
+     * @param Post $post
+     * @return Response
+     */
+    public function editPost(Request $request, Post $post)
+    {
+
+        # Récupération du formulaire
+        $form = $this->createForm(PostForm::class, $post)
+            ->handleRequest($request);
+
+        # Traitement du Formulaire
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+        }
+
+        # Affichage dans la vue
+        return $this->render("user/post-edit.html.twig", [
+            'form' => $form->createView()
+        ]);
+    }
+
+
 
 
 

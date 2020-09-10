@@ -1,5 +1,5 @@
 <div class="card" style="width: 18rem;">
-    <img src="{{ asset('assets/images/parking_1.jpg') }}" class="card-img-top" alt="{{ post.alias }}">
+    <img src="{{ asset('uploads/posts/' ~ post.image())  }}" class="card-img-top" >
     <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
         <p>{{ post.address }}</p>
