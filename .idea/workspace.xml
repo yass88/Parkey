@@ -2,16 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="353ee62f-1418-4f6f-896f-760ecb78c97a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Test-5-5f58c76d87468-jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Test-6-5f58c8672c2db-jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Test5-5f588ec245c52-jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/components/_recherche.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/default/annonce.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Jolie-garage-5f5e124734556-jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Mon-parking-5f5b78bedba08-jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Parking-Paris-5f5f6c1f9e824-jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Presidentielle-americaine-discrediter-Joe-Biden-et-embellir-son-propre-bilan-la-strategie-de-Donald-Trump-pour-se-relancer-a-deux-mois-du-scrutin-5f5a1a97ee082-png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Test-recherche-5f5cd17016283-jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Une-annonce-5f5d1b88a643c-jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/test7-5f5cdce4f24a6-jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/users/Yasyass-5f59fd137e42b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/SearchController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/default/recherche.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Parkey.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Parkey.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes/annotations.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/annotations.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes/calendar.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Post/PostParking.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Post/PostParking.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CategoryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ParkingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ParkingRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PostRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PostRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/components/_card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_card.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/_footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_footer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/_nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_nav.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/_recherche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_recherche.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/annonce.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/annonce.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/post-edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/post-edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/profil-edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/profil-edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/profil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/profil.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +165,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/tattali/calendar-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1h0Q493gyb3RW7MiwU8N3nIPruw" />
@@ -154,10 +181,10 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ActuNews" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -174,6 +201,10 @@
       <workItem from="1599474620324" duration="32916000" />
       <workItem from="1599636002192" duration="26977000" />
       <workItem from="1599721989292" duration="5473000" />
+      <workItem from="1599809611076" duration="33153000" />
+      <workItem from="1599908429572" duration="29681000" />
+      <workItem from="1599997423340" duration="25591000" />
+      <workItem from="1600065697875" duration="22407000" />
     </task>
     <servers />
   </component>
@@ -184,10 +215,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599667568503">
+    <state x="0" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600072411828">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="0" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599667568503" />
+    <state x="0" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600072411828" />
     <state x="219" y="333" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599206634522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -196,38 +227,45 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1599571696100" />
-    <state x="168" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599659727269">
+    <state x="313" y="386" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599934368637">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="168" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599659727269" />
-    <state x="260" y="286" key="FileChooserDialogImpl" timestamp="1599723081134">
+    <state x="168" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599830834889" />
+    <state x="313" y="386" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599934368637" />
+    <state x="260" y="286" key="FileChooserDialogImpl" timestamp="1600019563585">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="260" y="286" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1599723081134" />
-    <state x="205" y="254" key="NewPhpClassDialog" timestamp="1599571488428">
+    <state x="260" y="286" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1600019563585" />
+    <state x="282" y="149" key="NewPhpClassDialog" timestamp="1599749699648">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="205" y="254" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599571488428" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1599559253714">
+    <state x="282" y="149" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599749699648" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1600071053088">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599559253714" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1599226364817">
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1600071053088" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1600075633892">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1599226364817" />
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599577496639">
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599832716901" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1600075633892" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1599814545201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599577496639" />
-    <state x="297" y="445" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599210732203">
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599814545201" />
+    <state x="-220" y="57" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1600069114498">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="297" y="445" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1599210732203" />
-    <state x="113" y="242" key="run.anything.popup" timestamp="1599670650906">
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599834339664" />
+    <state x="-220" y="57" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600069114498" />
+    <state x="297" y="445" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599740433127">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="113" y="242" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599670650906" />
+    <state x="297" y="445" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1599740433127" />
+    <state x="113" y="242" key="run.anything.popup" timestamp="1600076440250">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="113" y="242" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600076440250" />
     <state x="103" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1599655529134">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -15,6 +15,7 @@ class PostParking
     public $content;
     public $image;
     public $availability;
+    public $availability_end;
     public $address;
     public $price_hour;
     public $price_day;

@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -30,26 +31,80 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 class DefaultController extends AbstractController
 {
-    public function home()
+    /**
+     * @Route("/", name="search_parking", methods={"GET|POST"})
+     * @param Request $request
+     */
+
+    public function home(Request $request)
     {
+
         #recupe 6 dernier articles
         $posts = $this->getDoctrine()
             ->getRepository(Post::class)
             ->findBy([], ['id' => 'DESC'], 6);
-        # dd() = var_drump qui coupe le site (affichage)
+
+        # Formulaire de recheche
+        $form = $this->createFormBuilder()
+            ->setAction($this->generateUrl('search_parking'))
+            ->setMethod('GET')
+            ->add('address', TextType::class, [
+                'label' => 'Adresse rechercher'
+            ])
+            ->add('availability', DateType::class, [
+                'label' => 'Date d\'arriver',
+                'years' => range(date('Y'),date('Y')+5)
+            ])
+            ->add('availability_end', DateType::class, [
+                'label' => 'Date de départ',
+                'years' => range(date('Y'),date('Y')+5),
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Rechercher'
+            ])
+            ->getForm();
+
+
+        $form->handleRequest($request);
+        # si le formulaire est envoyer
+        if ($form->isSubmitted()) {
+            # récupération de données
+            $search = $form->getData();
+            $address = $search['address'];
+            $availability = $search['availability'];
+            $availability_end = $search['availability_end'];
+
+            $search = $this->getDoctrine()->getRepository(Post::class);
+            $result = $search->research($address, $availability, $availability_end);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            # Récupération du formulaire
+            $form = $this->createForm(Post::class, $posts)
+                ->handleRequest($request);
+
+            return $this->render("default/recherche.html.twig", [
+               'result' => $result,
+                'posts' => $posts
+            ]);
+
+        }
+
         #dd($posts);
         # Transmettre à la vue les données
         return $this->render("default/home.html.twig", [
-            'posts' => $posts
+            'posts' => $posts,
+            'form' => $form->createView()
         ]);
     }
+
 
     /**
      * Formulaire pour rédiger une annonce
      * @IsGranted("ROLE_USER")
-     * @Route("/nouvelle_annonce", name="post_new", methods={"GET|POST"})
      * @param Request $request
-     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function newPost(Request $request, SluggerInterface $slugger)
     {
@@ -73,7 +128,7 @@ class DefaultController extends AbstractController
             ->add('price_month', NumberType::class, [
                 'label' => 'Location au mois'
             ])
-            ->add('content', TextType::class, [
+            ->add('content', TextareaType::class, [
                 'label' => 'Description de votre annonce'
             ])
             ->add('image', FileType::class, [
@@ -83,19 +138,28 @@ class DefaultController extends AbstractController
                 ]
             ])
             ->add('availability', DateType::class, [
-                'label' => 'Disponiilité'
+                'label' => 'Disponiilité',
+                'years' => range(date('Y'),date('Y')+2)
+            ])
+
+            ->add('availability_end', DateType::class, [
+                'label' => 'Disponiilité fin',
+                'required' => false,
+                'years' => range(date('Y'),date('Y')+2)
             ])
 
 
             //Parking
+            ->add('categorie', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'title',
+                'placeholder' => 'Type de véhicule'
+            ])
 
             ->add('largeur', NumberType::class, [
                 'label' => 'largeur'
             ])
-            ->add('categorie', EntityType::class, [
-                'class' => Category::class,
-                'choice_label' => 'title'
-            ])
+
             ->add('longueur', NumberType::class, [
                 'label' => 'longueur'
             ])
@@ -103,7 +167,8 @@ class DefaultController extends AbstractController
                 'label' => 'hauteur'
             ])
             ->add('guard', CheckboxType::class, [
-                'label' => 'guard'
+                'label' => 'guard',
+
             ])
             ->add('camera', CheckboxType::class, [
                 'label' => 'camera'
@@ -146,6 +211,7 @@ class DefaultController extends AbstractController
             $post->setContent($postParking->content);
             $post->setImage($postParking->image);
             $post->setAvailability($postParking->availability);
+            $post->setAvailabilityEnd($postParking->availability_end);
             $post->setAddress($postParking->address);
             $post->setPriceDay($postParking->price_day);
             $post->setPriceHour($postParking->price_hour);
@@ -209,20 +275,28 @@ class DefaultController extends AbstractController
      */
     public function annonce(Post $post, $alias)
     {
+
+        $repo = $this->getDoctrine()->getRepository(Post::class);
+        $postrepo = $repo->searchByAddress($post->getAddress());
+
+
         # Transmettre à la vue les données
         return $this->render('default/annonce.html.twig', [
             'alias' => $alias,
             'post' => $post,
+            'postrepo' => $postrepo
         ]);
     }
     /**
     * Modification des données d'un utilisateur
+     * @IsGranted("ROLE_USER", message="Vous n'avez pas les permissions nécessaires.")
      * @Route("/post/edit/{id}", name="user_post_edit", methods={"GET|POST"})
      * @param Request $request
      * @param Post $post
+     * @param $id
      * @return Response
      */
-    public function editPost(Request $request, Post $post)
+    public function editPost(Request $request, Post $post, $id)
     {
 
         # Récupération du formulaire
@@ -242,6 +316,10 @@ class DefaultController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+
+
+
 
 
 

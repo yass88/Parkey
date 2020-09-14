@@ -2,8 +2,8 @@ home:
     path: /
     controller: App\Controller\DefaultController::home
 
-newPost:
-    path: /nouvelle/location
+post_new:
+    path: /nouvelle_annonce
     controller: App\Controller\DefaultController::newPost
 
 annonce:
