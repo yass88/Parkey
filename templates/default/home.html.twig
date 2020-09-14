@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% include 'components/_nav.html.twig' %}
 
     <div>
         <h1>Home</h1>
@@ -10,7 +9,7 @@
 
         <div class="row">
             <div class="col-4 mt-3">
-                {% include 'components/_recherche.html.twig' %}
+                {{ form(form) }}
             </div>
         </div>
 
@@ -53,5 +52,4 @@
     </div>
 
 
-    {% include 'components/_footer.html.twig' %}
 {% endblock %}

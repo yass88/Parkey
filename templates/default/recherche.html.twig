@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% block content %}
+        {{ form(form) }}
+{#        {{ dump(results) }}#}
+
+        {% for result in results %}
+
+            <div class="card" style="width: 18rem;">
+                <img src="{{ asset('uploads/posts/' ~ result.image) }}" class="card-img-top" alt="{{ result.alias }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ result.title }}</h5>
+
+                    <p>{{ result.address }}</p>
+
+                    <div class="card-body">
+                        <p>{{ result.parkings.category.title }}</p>
+                        <p>Disponible à partir de {{ result.availability|date("d/m/Y", "Europe/Paris") }}</p>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <a href="{{ path('default_annonce', {
+                        'alias' : result.alias
+                    }) }}" class="card-link">Voir l'annonce</a>
+                </div>
+            </div>
+
+
+
+        {% endfor %}
+
+    {% endblock %}
+
+
+{% endblock %}

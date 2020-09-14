@@ -10,6 +10,7 @@
 
     <div class="card-body">
         <p>{{ post.parkings.category.title }}</p>
+        <p>Disponible à partir de {{ post.availability|date("d/m/Y", "Europe/Paris") }}</p>
     </div>
         <div>
             {% if is_granted("ROLE_USER") %}

@@ -11,7 +11,9 @@
         {% endblock %}
     </head>
     <body>
+    {% include 'components/_nav.html.twig' %}
     {% block body %}{% endblock %}
+    {% include 'components/_footer.html.twig' %}
 
         {% block javascripts %}
             <link rel="stylesheet" href="{{ asset('assets/js/script.js') }}">

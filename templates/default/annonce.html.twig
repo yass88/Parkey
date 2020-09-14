@@ -1,9 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% include 'components/_nav.html.twig' %}
 
     {% block content %}
+
+        {% if app.user and app.user.id == post.user.id %}
+            <a class="nav-link" href="{{ path('user_post_edit' , {
+                'id' : post.id
+            }) }}">Modifier mon annonce</a>
+        {% endif %}
+
     <h2>{{ post.title }}</h2>
     <p>{{ post.address }}</p>
         <img src="{{ asset('uploads/posts/' ~ post.image) }}" class="card-img-top" alt="{{ post.alias }}">
@@ -49,10 +55,28 @@
         <p>{{ post.parkings.hauteur }}</p>
 
         <h3>Caractéristiques</h3>
-        <p>{{ post.parkings.guard }}</p>
-        <p>{{ post.parkings.camera }}</p>
-        <p>{{ post.parkings.covered }}</p>
-        <p>{{ post.parkings.locked }}</p>
+{#        if post[parking] == parking {#}
+{#            if parkings == guard || parkings == camera || parking == covered || parking == locked{#}
+{#                reterun #}
+{#            } #}
+{#        #}
+{#        #}
+{#        }#}
+
+        {% if post.parkings == post.parkings.guard %}
+            <p>Gardiens</p>
+        {% endif %}
+
+            {% if post.parkings == post.parkings.camera %}
+                <p>Camera</p>
+    {% endif %}
+
+        {% if post.parkings == post.parkings.covered %}
+            <p>Parking couvert</p>
+        {% endif %}
+        {% if post.parkings == post.parkings.locked %}
+            <p>Parking fermeé à clé</p>
+        {% endif %}
 
         <h3>Voir sur la carte</h3>
 
@@ -60,6 +84,17 @@
 
         <h3>Ça pourrait vous plaire</h3>
 
+{#                {{ dump(postrepo) }}#}
+
+        {% for post in postrepo %}
+{#            {{ postrepos }}#}
+
+            <div class="col-4 mt-3">
+                {% include 'components/_card.html.twig' %}
+            </div>
+
+
+        {% endfor %}
 
 
 
@@ -67,5 +102,4 @@
     {% endblock %}
 
 
-    {% include 'components/_footer.html.twig' %}
 {% endblock %}
