@@ -24,6 +24,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -76,6 +77,9 @@ class DefaultController extends AbstractController
             ->add('content', TextType::class, [
                 'label' => 'Description de votre annonce'
             ])
+            ->add('active', CheckboxType::class, [
+                'label' => 'Afficher/Cacher'
+            ])
             ->add('image', FileType::class, [
                 'label' => false,
                 'attr' => [
@@ -83,9 +87,11 @@ class DefaultController extends AbstractController
                 ]
             ])
             ->add('availability', DateType::class, [
-                'label' => 'Disponiilité'
+                'label' => 'Disponibilité'
             ])
-
+            ->add('availability_end', DateType::class, [
+                'label' => 'Fin Disponibilité'
+            ])
 
             //Parking
 
@@ -146,6 +152,9 @@ class DefaultController extends AbstractController
             $post->setContent($postParking->content);
             $post->setImage($postParking->image);
             $post->setAvailability($postParking->availability);
+            $post->setAvailabilityEnd($postParking->availability_end);
+            $post->setActive($postParking->active);
+
             $post->setAddress($postParking->address);
             $post->setPriceDay($postParking->price_day);
             $post->setPriceHour($postParking->price_hour);
@@ -195,10 +204,65 @@ class DefaultController extends AbstractController
             'form' => $form->createView()
         ]);
 
+
+    }
+    /**
+     * @Route("/favoris/ajout/{id}", name="ajout_favoris")
+     * @param Post $post
+     */
+    public function ajoutFavoris(post $post)
+    {
+        if(!$post){
+            throw new NotFoundHttpException('Pas d\'annonce trouvée');
+        }
+        $post->addFavori($this->getUser());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($post);
+        $em->flush();
+        return $this->redirectToRoute('home');
     }
 
     /**
-     * Modification des données d'un utilisateur
+     * @Route("/favoris/retrait/{id}", name="retrait_favoris")
+     * @param Post $post
+     */
+    public function retraitFavoris(Post $post)
+    {
+        if(!$post){
+            throw new NotFoundHttpException('Pas d\'annonce trouvée');
+        }
+        $post->removeFavori($this->getUser());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($post);
+        $em->flush();
+        return $this->redirectToRoute('home');
+    }
+
+
+    /**
+     * Affiche les articles d'une catégorie
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     * @Route("/annonce/{alias}",
+     *     name="default_annonce",
+     *     methods={"GET"})
+     * @param $alias
+     * @param Post $post
+     * @return Response
+     */
+    public function annonce(Post $post, $alias)
+    {
+        # Transmettre à la vue les données
+        return $this->render('default/annonce.html.twig', [
+            'alias' => $alias,
+            'post' => $post,
+        ]);
+    }
+
+
+    /**
+    * Modification des données d'un utilisateur
      * @Route("/post/edit/{id}", name="user_post_edit", methods={"GET|POST"})
      * @param Request $request
      * @param Post $post
@@ -222,24 +286,10 @@ class DefaultController extends AbstractController
         # Affichage dans la vue
         return $this->render("user/post-edit.html.twig", [
             'form' => $form->createView()
-     * Affiche les articles d'une catégorie
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
-     * @Route("/annonce/{alias}",
-     *     name="default_annonce",
-     *     methods={"GET"})
-     * @param $alias
-     * @param Post $post
-     * @return Response
-     */
-    public function annonce(Post $post, $alias)
-    {
-        # Transmettre à la vue les données
-        return $this->render('default/annonce.html.twig', [
-            'alias' => $alias,
-            'post' => $post,
         ]);
     }
-  
+
+
 
 }
 

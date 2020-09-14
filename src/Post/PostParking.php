@@ -15,6 +15,8 @@ class PostParking
     public $content;
     public $image;
     public $availability;
+    public $availability_end;
+    public $active;
     public $address;
     public $price_hour;
     public $price_day;
@@ -33,6 +35,7 @@ class PostParking
 
     public $createdAt;
     public $updatedAt;
+
 
     /**
      * PostParking constructor.

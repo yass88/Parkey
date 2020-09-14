@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les utilisateurs
+{% endblock %}
+
+{% block body %}
+    <h1>Gérer les les utilisateurs</h1>
+    <table class="table striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Date d'inscription</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.firstname}}</td>
+                <td>{{user.lastname}}</td>
+                <td>{{user.createdAt|date}}</td>
+                <td class="text-center">
+                    <a href="{{ path('admin_profil_edit_user', {'id' : user.id}) }}" class="btn primary press modal-trigger" data-target="modal-delete" data-id="{{user.id}}" data-titre="{{user.id}}">Modifier</a>
+                </td>
+                <td class="text-center">
+                    <a href="{{ path('admin_supprimer_user', {'id' : user.id}) }}" class="btn primary press modal-trigger" data-target="modal-delete" data-id="{{user.id}}" data-titre="{{user.id}}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <div class="modal white falling" id="modal-delete">
+        <div class="modal-header">Supprimer un Utilisateur</div>
+        <div class="divider"></div>
+        <div class="modal-content">
+        </div>
+        <div class="divider"></div>
+        <div class="modal-footer">
+            <a href="" class="btn red">Valider</a>
+            <button data-target="modal-delete" class="ml-auto btn small primary modal-trigger">Close</button>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+

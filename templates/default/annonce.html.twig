@@ -7,10 +7,28 @@
     <h2>{{ post.title }}</h2>
     <p>{{ post.address }}</p>
         <img src="{{ asset('uploads/posts/' ~ post.image) }}" class="card-img-top" alt="{{ post.alias }}">
+        <div>
+            {% if is_granted("ROLE_USER") %}
+                {% set isFavorite = false %}
+                {% for favoris in post.favoris %}
+                    {% if favoris.id == app.user.id %}
+                        {% set isFavorite = true %}
+                    {% endif %}
+                {% endfor %}
+                {% if isFavorite %}
+                    <a href="{{ path('retrait_favoris', {id: post.id}) }}"><i class="fas fa-heart"></i></a>
+                {% else %}
+                    <a href="{{ path('ajout_favoris', {id: post.id}) }}"><i class="far fa-heart"></i></a>
+                {% endif %}
 
+            {% else %}
+                <i class="far fa-heart"></i>
+            {% endif %}
+
+        </div>
 
         # User
-        <img src="{{ asset('uploads/posts/' ~ post.user.avatar) }}">
+        <img src="{{ asset('uploads/users/' ~ post.user.avatar) }}">
         <p>{{ post.user.nickname }}</p>
 
         <p> {{ post.parkings.createdAt|date("m/d/Y H:i:s", "Europe/Paris") }}</p>

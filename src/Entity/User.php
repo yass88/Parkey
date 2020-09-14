@@ -91,9 +91,15 @@ class User implements UserInterface
      */
     private $posts;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Post::class, mappedBy="favoris")
+     */
+    private $favoris;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
+        $this->favoris = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -320,6 +326,34 @@ class User implements UserInterface
             if ($post->getUser() === $this) {
                 $post->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Post[]
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(Post $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+            $favori->addFavori($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Post $favori): self
+    {
+        if ($this->favoris->contains($favori)) {
+            $this->favoris->removeElement($favori);
+            $favori->removeFavori($this);
         }
 
         return $this;

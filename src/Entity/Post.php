@@ -96,10 +96,26 @@ class Post
      */
     private $parkings;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $availability_end;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="favoris")
+     */
+    private $favoris;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $active;
+
     public function __construct()
     {
         $this->bookings = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->favoris = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -335,5 +351,55 @@ class Post
     public function setPriceMonth($priceMonth): void
     {
         $this->priceMonth = $priceMonth;
+    }
+
+    public function getAvailabilityEnd(): ?\DateTimeInterface
+    {
+        return $this->availability_end;
+    }
+
+    public function setAvailabilityEnd(?\DateTimeInterface $availability_end): self
+    {
+        $this->availability_end = $availability_end;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(User $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(User $favori): self
+    {
+        if ($this->favoris->contains($favori)) {
+            $this->favoris->removeElement($favori);
+        }
+
+        return $this;
+    }
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
+
+        return $this;
     }
 }
