@@ -3,30 +3,105 @@
 {% block body %}
 
     {% block content %}
-        {{ form(form) }}
-{#        {{ dump(results) }}#}
+        <header class="hero-search page-recherche">
+            <div class="conteneur">
+                <form action="" method="GET" class="search-bar" role="search">
+                    {{ form(form) }}
 
+                </form>
+            </div>
+        </header>
         {% for result in results %}
 
-            <div class="card" style="width: 18rem;">
-                <img src="{{ asset('uploads/posts/' ~ result.image) }}" class="card-img-top" alt="{{ result.alias }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ result.title }}</h5>
+<main class="main">
+    <div class="conteneur">
+        <!--Annonces home -->
+        <section class="cartes-annonces">
+            <h2 class="h2">Annonces rechercher</h2>
 
-                    <p>{{ result.address }}</p>
 
-                    <div class="card-body">
-                        <p>{{ result.parkings.category.title }}</p>
-                        <p>Disponible à partir de {{ result.availability|date("d/m/Y", "Europe/Paris") }}</p>
+        <article class="carte-annonce">
+                <figure><img src="{{ asset('uploads/posts/' ~ result.image) }}" alt="{{ result.alias }}" ></figure>
+                <div class="carte-content">
+                    <div class="cartes-infos">
+                        <div class="vehicules">
+                            <ul class="liste-vehicules">
+                                {% if result.parkings.category.title == result.parkings.category.title %}
+                                    {% if result.parkings.category.id == '3' %}
+                                        <li>
+                                            <img src="{{ asset('assets/images/icon-vehicules-1-velo.svg') }}" alt="Moto, deux roues motorisé" title="Moto, deux roues motorisé">
+                                        </li>
+                                    {% endif %}
+                                    {% if result.parkings.category.id == '2' %}
+                                        <li>
+                                            <img src="{{ asset('assets/images/icon-vehicules-2-moto.svg') }}" alt="Moto, deux roues motorisé" title="Moto, deux roues motorisé">
+                                        </li>
+                                    {% endif %}
+                                    {% if result.parkings.category.id == '5' %}
+                                        <li>
+                                            <img src="{{ asset('assets/images/icon-vehicules-3-auto.svg') }}" alt="Moto, deux roues motorisé" title="Moto, deux roues motorisé">
+                                        </li>
+                                    {% endif %}
+                                    {% if result.parkings.category.id == '6' %}
+                                        <li>
+                                            <img src="{{ asset('assets/images/icon-vehicules-5-campingcar.svg') }}" alt="Moto, deux roues motorisé" title="Moto, deux roues motorisé">
+                                        </li>
+                                    {% endif %}
+                                    {% if result.parkings.category.id == '7' %}
+                                        <li>
+                                            <img src="{{ asset('assets/images/icon-vehicules-6-camion.svg') }}" alt="Moto, deux roues motorisé" title="Moto, deux roues motorisé">
+                                        </li>
+                                    {% endif %}
+                                    {% if result.parkings.category.id == '8' %}
+                                        <li>
+                                            <img src="{{ asset('assets/images/icon-vehicules-4-utilitaire.svg') }}" alt="Moto, deux roues motorisé" title="Moto, deux roues motorisé">
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <div class="prix-bloc">
+                            <span class="prix-description">À partir de</span>
+                            <strong class="prix-valeur">{{ result.priceDay }}<span class="devise">€</span></strong>
+                        </div>
                     </div>
+                    <button class="bouton-mini bouton-favoris" type="submit" title="Ajouter aux favoris">
+                        {% if is_granted("ROLE_USER") %}
+                            {% set isFavorite = false %}
+                            {% for favoris in result.favoris %}
+                                {% if favoris.id == app.user.id %}
+                                    {% set isFavorite = true %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if isFavorite %}
+                                <a class="bouton-favoris-actif" href="{{ path('retrait_favoris', {id: result.id}) }}">
+                                    <svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><path d="M15.63 2.45753C15.2469 2.07428 14.7921 1.77026 14.2915 1.56284C13.7909 1.35542 13.2543 1.24866 12.7125 1.24866C12.1706 1.24866 11.634 1.35542 11.1335 1.56284C10.6329 1.77026 10.178 2.07428 9.79497 2.45753L8.99997 3.25253L8.20497 2.45753C7.4312 1.68376 6.38174 1.24906 5.28747 1.24906C4.19319 1.24906 3.14374 1.68376 2.36997 2.45753C1.5962 3.2313 1.1615 4.28075 1.1615 5.37503C1.1615 6.4693 1.5962 7.51876 2.36997 8.29253L3.16497 9.08753L8.99997 14.9225L14.835 9.08753L15.63 8.29253C16.0132 7.90946 16.3172 7.45464 16.5247 6.95404C16.7321 6.45345 16.8388 5.91689 16.8388 5.37503C16.8388 4.83316 16.7321 4.2966 16.5247 3.79601C16.3172 3.29542 16.0132 2.84059 15.63 2.45753V2.45753Z" stroke="#3E3EAF" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            {% else %}
+                                <a href="{{ path('ajout_favoris', {id: result.id}) }}">
+                                    <svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><path d="M15.63 2.45753C15.2469 2.07428 14.7921 1.77026 14.2915 1.56284C13.7909 1.35542 13.2543 1.24866 12.7125 1.24866C12.1706 1.24866 11.634 1.35542 11.1335 1.56284C10.6329 1.77026 10.178 2.07428 9.79497 2.45753L8.99997 3.25253L8.20497 2.45753C7.4312 1.68376 6.38174 1.24906 5.28747 1.24906C4.19319 1.24906 3.14374 1.68376 2.36997 2.45753C1.5962 3.2313 1.1615 4.28075 1.1615 5.37503C1.1615 6.4693 1.5962 7.51876 2.36997 8.29253L3.16497 9.08753L8.99997 14.9225L14.835 9.08753L15.63 8.29253C16.0132 7.90946 16.3172 7.45464 16.5247 6.95404C16.7321 6.45345 16.8388 5.91689 16.8388 5.37503C16.8388 4.83316 16.7321 4.2966 16.5247 3.79601C16.3172 3.29542 16.0132 2.84059 15.63 2.45753V2.45753Z" stroke="#3E3EAF" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            {% endif %}
 
-                </div>
-                <div class="card-body">
+                        {% else %}
+                            <svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><path d="M15.63 2.45753C15.2469 2.07428 14.7921 1.77026 14.2915 1.56284C13.7909 1.35542 13.2543 1.24866 12.7125 1.24866C12.1706 1.24866 11.634 1.35542 11.1335 1.56284C10.6329 1.77026 10.178 2.07428 9.79497 2.45753L8.99997 3.25253L8.20497 2.45753C7.4312 1.68376 6.38174 1.24906 5.28747 1.24906C4.19319 1.24906 3.14374 1.68376 2.36997 2.45753C1.5962 3.2313 1.1615 4.28075 1.1615 5.37503C1.1615 6.4693 1.5962 7.51876 2.36997 8.29253L3.16497 9.08753L8.99997 14.9225L14.835 9.08753L15.63 8.29253C16.0132 7.90946 16.3172 7.45464 16.5247 6.95404C16.7321 6.45345 16.8388 5.91689 16.8388 5.37503C16.8388 4.83316 16.7321 4.2966 16.5247 3.79601C16.3172 3.29542 16.0132 2.84059 15.63 2.45753V2.45753Z" stroke="#3E3EAF" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        {% endif %}
+                    </button>
+
+                    <h3 class="carte-titre">{{ result.title }}</h3>
+                    <p class="adresse">{{ result.address }}</p>
                     <a href="{{ path('default_annonce', {
                         'alias' : result.alias
-                    }) }}" class="card-link">Voir l'annonce</a>
+                    }) }}" class="card-link"><span>Voir</span></a>
                 </div>
-            </div>
+            </article>
+
+    </div><!-- fin conteneur -->
+</main>
+
+
+
+
 
 
 

@@ -10,93 +10,267 @@
             }) }}">Modifier mon annonce</a>
         {% endif %}
 
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.address }}</p>
-        <img src="{{ asset('uploads/posts/' ~ post.image) }}" class="card-img-top" alt="{{ post.alias }}">
-        <div>
-            {% if is_granted("ROLE_USER") %}
-                {% set isFavorite = false %}
-                {% for favoris in post.favoris %}
-                    {% if favoris.id == app.user.id %}
-                        {% set isFavorite = true %}
-                    {% endif %}
-                {% endfor %}
-                {% if isFavorite %}
-                    <a href="{{ path('retrait_favoris', {id: post.id}) }}"><i class="fas fa-heart"></i></a>
-                {% else %}
-                    <a href="{{ path('ajout_favoris', {id: post.id}) }}"><i class="far fa-heart"></i></a>
-                {% endif %}
+<!--Header / Titre de l'annonce, adresse, annonceur et image -->
+<article class="fiche-annonce">
+    <header class="annonce-header">
+        <div class="conteneur">
+            <div class="annonce-header-texte">
+                <div class="conteneur-mobile">
+                    <div class="bloc-titre">
+                        <h1 class="annonce-titre">Parking Lagrange Saint-Michel Notre Dame</h1>
+                        <p class="annonce-adresse">Passage des Trois Rivalets, 31204 Aix-en-Provence</p>
+                        <div class="bloc-cta">
+                            <button class="bouton-mini bouton-favoris" type="submit" title="Ajouter aux favoris">
+                                {% if is_granted("ROLE_USER") %}
+                                    {% set isFavorite = false %}
+                                    {% for favoris in post.favoris %}
+                                        {% if favoris.id == app.user.id %}
+                                            {% set isFavorite = true %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if isFavorite %}
+                                        <a class="bouton-favoris-actif" href="{{ path('retrait_favoris', {id: post.id}) }}">
+                                            <svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><path d="M15.63 2.45753C15.2469 2.07428 14.7921 1.77026 14.2915 1.56284C13.7909 1.35542 13.2543 1.24866 12.7125 1.24866C12.1706 1.24866 11.634 1.35542 11.1335 1.56284C10.6329 1.77026 10.178 2.07428 9.79497 2.45753L8.99997 3.25253L8.20497 2.45753C7.4312 1.68376 6.38174 1.24906 5.28747 1.24906C4.19319 1.24906 3.14374 1.68376 2.36997 2.45753C1.5962 3.2313 1.1615 4.28075 1.1615 5.37503C1.1615 6.4693 1.5962 7.51876 2.36997 8.29253L3.16497 9.08753L8.99997 14.9225L14.835 9.08753L15.63 8.29253C16.0132 7.90946 16.3172 7.45464 16.5247 6.95404C16.7321 6.45345 16.8388 5.91689 16.8388 5.37503C16.8388 4.83316 16.7321 4.2966 16.5247 3.79601C16.3172 3.29542 16.0132 2.84059 15.63 2.45753V2.45753Z" stroke="#3E3EAF" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('ajout_favoris', {id: post.id}) }}">
+                                            <svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><path d="M15.63 2.45753C15.2469 2.07428 14.7921 1.77026 14.2915 1.56284C13.7909 1.35542 13.2543 1.24866 12.7125 1.24866C12.1706 1.24866 11.634 1.35542 11.1335 1.56284C10.6329 1.77026 10.178 2.07428 9.79497 2.45753L8.99997 3.25253L8.20497 2.45753C7.4312 1.68376 6.38174 1.24906 5.28747 1.24906C4.19319 1.24906 3.14374 1.68376 2.36997 2.45753C1.5962 3.2313 1.1615 4.28075 1.1615 5.37503C1.1615 6.4693 1.5962 7.51876 2.36997 8.29253L3.16497 9.08753L8.99997 14.9225L14.835 9.08753L15.63 8.29253C16.0132 7.90946 16.3172 7.45464 16.5247 6.95404C16.7321 6.45345 16.8388 5.91689 16.8388 5.37503C16.8388 4.83316 16.7321 4.2966 16.5247 3.79601C16.3172 3.29542 16.0132 2.84059 15.63 2.45753V2.45753Z" stroke="#3E3EAF" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </a>
+                                    {% endif %}
 
-            {% else %}
-                <i class="far fa-heart"></i>
-            {% endif %}
-
-        </div>
-
-        # User
-        <img src="{{ asset('uploads/users/' ~ post.user.avatar) }}">
-        <p>{{ post.user.nickname }}</p>
-
-        <p> {{ post.parkings.createdAt|date("m/d/Y H:i:s", "Europe/Paris") }}</p>
-
-        <p> {{ post.parkings.updatedAt|date("m/d/Y H:i:s", "Europe/Paris") }}</p>
-
-
-        # caractèristiques véhicule
-        <h3>Véhicules conseillés</h3>
-        <p>{{ post.parkings.category.title }}</p>
-
-        <h3>A propos de {{ post.title }}</h3>
-        <p>{{ post.content }}</p>
-
-        <h3>Dimensions</h3>
-        <p>{{ post.parkings.largeur }}</p>
-        <p>{{ post.parkings.longueur }}</p>
-        <p>{{ post.parkings.hauteur }}</p>
-
-        <h3>Caractéristiques</h3>
-{#        if post[parking] == parking {#}
-{#            if parkings == guard || parkings == camera || parking == covered || parking == locked{#}
-{#                reterun #}
-{#            } #}
-{#        #}
-{#        #}
-{#        }#}
-
-        {% if post.parkings == post.parkings.guard %}
-            <p>Gardiens</p>
-        {% endif %}
-
-            {% if post.parkings == post.parkings.camera %}
-                <p>Camera</p>
-    {% endif %}
-
-        {% if post.parkings == post.parkings.covered %}
-            <p>Parking couvert</p>
-        {% endif %}
-        {% if post.parkings == post.parkings.locked %}
-            <p>Parking fermeé à clé</p>
-        {% endif %}
-
-        <h3>Voir sur la carte</h3>
-
-
-
-        <h3>Ça pourrait vous plaire</h3>
-
-{#                {{ dump(postrepo) }}#}
-
-        {% for post in postrepo %}
-{#            {{ postrepos }}#}
-
-            <div class="col-4 mt-3">
-                {% include 'components/_card.html.twig' %}
+                                {% else %}
+                                    <svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><path d="M15.63 2.45753C15.2469 2.07428 14.7921 1.77026 14.2915 1.56284C13.7909 1.35542 13.2543 1.24866 12.7125 1.24866C12.1706 1.24866 11.634 1.35542 11.1335 1.56284C10.6329 1.77026 10.178 2.07428 9.79497 2.45753L8.99997 3.25253L8.20497 2.45753C7.4312 1.68376 6.38174 1.24906 5.28747 1.24906C4.19319 1.24906 3.14374 1.68376 2.36997 2.45753C1.5962 3.2313 1.1615 4.28075 1.1615 5.37503C1.1615 6.4693 1.5962 7.51876 2.36997 8.29253L3.16497 9.08753L8.99997 14.9225L14.835 9.08753L15.63 8.29253C16.0132 7.90946 16.3172 7.45464 16.5247 6.95404C16.7321 6.45345 16.8388 5.91689 16.8388 5.37503C16.8388 4.83316 16.7321 4.2966 16.5247 3.79601C16.3172 3.29542 16.0132 2.84059 15.63 2.45753V2.45753Z" stroke="#3E3EAF" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                {% endif %}
+                            </button>
+                            <button class="bouton-mini bouton-partage" type="submit" title="Partager l'annonce">
+                                <span class="visually-hidden">Partager</span>
+                                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 6C14.7426 6 15.75 4.99264 15.75 3.75C15.75 2.50736 14.7426 1.5 13.5 1.5C12.2574 1.5 11.25 2.50736 11.25 3.75C11.25 4.99264 12.2574 6 13.5 6Z"  stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 11.25C5.74264 11.25 6.75 10.2426 6.75 9C6.75 7.75736 5.74264 6.75 4.5 6.75C3.25736 6.75 2.25 7.75736 2.25 9C2.25 10.2426 3.25736 11.25 4.5 11.25Z"  stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 16.5C14.7426 16.5 15.75 15.4926 15.75 14.25C15.75 13.0074 14.7426 12 13.5 12C12.2574 12 11.25 13.0074 11.25 14.25C11.25 15.4926 12.2574 16.5 13.5 16.5Z"  stroke-linecap="round" stroke-linejoin="round"/><path d="M6.4425 10.1324L11.565 13.1174" stroke-linecap="round" stroke-linejoin="round"/><path d="M11.5575 4.88245L6.4425 7.86745"  stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="annonceur">
+                        <img class="avatar" src="{{ asset('uploads/users/' ~ post.user.avatar) }}" alt="{{ post.user.avatar }}">
+                        <p class="annonceur-contact">
+                            <strong class="annonceur-nom">{{ post.user.nickname }}</strong>
+                            <a class="lien" href="#">Lui poser une question</a>
+                        </p>
+                    </div>
+                </div><!-- fin conteneur-mobile -->
             </div>
+            <div class="annonce-header-images">
+                <div class="conteneur-mobile">
+                    <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="{{ asset('uploads/posts/' ~ post.image) }}" alt="Titre de l'annonce - Photo 1" />
+                        </div>
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="{{ asset('uploads/posts/' ~ post.image) }}" alt="Titre de l'annonce - Photo 2" />
+                        </div>
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="{{ asset('uploads/posts/' ~ post.image) }}" alt="Titre de l'annonce - Photo 3" />
+                        </div>
+                    </div>
+                </div><!-- fin conteneur-mobile -->
+            </div><!-- fin conteneur -->
+        </div>
+    </header>
+    <!--Header / Titre de l'annonce, adresse, annonceur et image -->
+    <div class="annonce-content">
+        <div class="conteneur">
+            <section class="annonce-infos">
+                <div class="conteneur-mobile">
+                    <h2>Véhicules acceptés</h2>
+                    <ul class="liste-vehicules">
+                        {% if post.parkings.category.title == post.parkings.category.title %}
+                            {% if post.parkings.category.id == '3' %}
+                                <li>
+                                    <img src="{{ asset('assets/images/icon-vehicules-1-velo.svg') }}" alt="Moto, deux roues motorisé" title="Moto, deux roues motorisé">
+                                </li>
+                            {% endif %}
+                            {% if post.parkings.category.id == '2' %}
+                            <li>
+                                <img src="{{ asset('assets/images/icon-vehicules-2-moto.svg') }}" alt="Moto, deux roues motorisé" title="Moto, deux roues motorisé">
+                            </li>
+                            {% endif %}
+                            {% if post.parkings.category.id == '5' %}
+                                <li>
+                                    <img src="{{ asset('assets/images/icon-vehicules-3-auto.svg') }}" alt="Moto, deux roues motorisé" title="Moto, deux roues motorisé">
+                                </li>
+                            {% endif %}
+                            {% if post.parkings.category.id == '6' %}
+                                <li>
+                                    <img src="{{ asset('assets/images/icon-vehicules-5-campingcar.svg') }}" alt="Moto, deux roues motorisé" title="Moto, deux roues motorisé">
+                                </li>
+                            {% endif %}
+                            {% if post.parkings.category.id == '7' %}
+                                <li>
+                                    <img src="{{ asset('assets/images/icon-vehicules-6-camion.svg') }}" alt="Moto, deux roues motorisé" title="Moto, deux roues motorisé">
+                                </li>
+                            {% endif %}
+                            {% if post.parkings.category.id == '8' %}
+                                <li>
+                                    <img src="{{ asset('assets/images/icon-vehicules-4-utilitaire.svg') }}" alt="Moto, deux roues motorisé" title="Moto, deux roues motorisé">
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                    </ul>
+
+                    <h2>À propos de {{ post.title }}</h2>
+                    <p>{{ post.content }}</p>
+
+                    <h2>Dimensions</h2>
+                    <ul class="liste-caracteristiques">
+                        <li><h3>Longueur&#x202F;:</h3> {{ post.parkings.longueur }}m</li>
+                        <li><h3>Largeur&#x202F;:</h3> {{ post.parkings.largeur }}m</li>
+                        <li><h3>Hauteur&#x202F;:</h3> {{ post.parkings.hauteur }}m</li>
+                    </ul>
+
+                    <h2>Caractéristiques</h2>
+                    <ul class="liste-caracteristiques">
+                        <li><h3>Couvert&nbsp;:</h3>
+                            {% if post.parkings == post.parkings.covered %}
+                                oui
+                            {% elseif post.parkings != post.parkings.covered %}
+                                non
+                            {% endif %}
+                        </li>
+                        <li><h3>Fermé à clé&nbsp;:</h3>
+                            {% if post.parkings == post.parkings.locked %}
+                                oui
+                            {% elseif post.parkings != post.parkings.locked %}
+                                non
+                            {% endif %}
+                        </li>
+                        <li><h3>Caméra de surveillance&nbsp;:</h3>
+                            {% if post.parkings == post.parkings.camera %}
+                                oui
+                            {% elseif post.parkings != post.parkings.camera %}
+                                non
+                            {% endif %}
+                        </li>
+                        <li><h3>Gardien&nbsp;:</h3>
+                            {% if post.parkings == post.parkings.guard %}
+                                oui
+                            {% elseif post.parkings != post.parkings.guard %}
+                                non
+                            {% endif %}
+                        </li>
+                    </ul>
+
+                    <h2>Voir l'emplacement</h2>
+                    <div id='map' class="plan"></div>
+                    <script>
+                        mapboxgl.accessToken = 'pk.eyJ1IjoiY2Vzbm8iLCJhIjoielgwaWt4RSJ9.7AIU4sSCwzmunrIXetc1DQ';
+                        var map = new mapboxgl.Map({
+                            container: 'map',
+                            style: 'mapbox://styles/cesno/ckes74kzs7th31at25rxa26ru', // stylesheet location
+                            center: [ 2.441870, 48.868446 ], // starting position [lng, lat]
+                            zoom: 15 // starting zoom
+                        });
+                        // Pour le plein écran
+                        map.addControl(new mapboxgl.FullscreenControl());
+                        // Add zoom and rotation controls to the map.
+                        map.addControl(new mapboxgl.NavigationControl());
+                        // marqueur
+                        var marker = new mapboxgl.Marker()
+                            .setLngLat([2.441870, 48.868446])
+                            .addTo(map);
+                    </script>
 
 
+                    <div class="bloc-cta">
+                        <div class="sous-bloc">
+                            <button class="bouton-mini bouton-favoris" type="submit" title="Ajouter aux favoris">
+                                {% if is_granted("ROLE_USER") %}
+                                    {% set isFavorite = false %}
+                                    {% for favoris in post.favoris %}
+                                        {% if favoris.id == app.user.id %}
+                                            {% set isFavorite = true %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if isFavorite %}
+                                        <a class="bouton-favoris-actif" href="{{ path('retrait_favoris', {id: post.id}) }}">
+                                            <svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><path d="M15.63 2.45753C15.2469 2.07428 14.7921 1.77026 14.2915 1.56284C13.7909 1.35542 13.2543 1.24866 12.7125 1.24866C12.1706 1.24866 11.634 1.35542 11.1335 1.56284C10.6329 1.77026 10.178 2.07428 9.79497 2.45753L8.99997 3.25253L8.20497 2.45753C7.4312 1.68376 6.38174 1.24906 5.28747 1.24906C4.19319 1.24906 3.14374 1.68376 2.36997 2.45753C1.5962 3.2313 1.1615 4.28075 1.1615 5.37503C1.1615 6.4693 1.5962 7.51876 2.36997 8.29253L3.16497 9.08753L8.99997 14.9225L14.835 9.08753L15.63 8.29253C16.0132 7.90946 16.3172 7.45464 16.5247 6.95404C16.7321 6.45345 16.8388 5.91689 16.8388 5.37503C16.8388 4.83316 16.7321 4.2966 16.5247 3.79601C16.3172 3.29542 16.0132 2.84059 15.63 2.45753V2.45753Z" stroke="#3E3EAF" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('ajout_favoris', {id: post.id}) }}">
+                                            <svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><path d="M15.63 2.45753C15.2469 2.07428 14.7921 1.77026 14.2915 1.56284C13.7909 1.35542 13.2543 1.24866 12.7125 1.24866C12.1706 1.24866 11.634 1.35542 11.1335 1.56284C10.6329 1.77026 10.178 2.07428 9.79497 2.45753L8.99997 3.25253L8.20497 2.45753C7.4312 1.68376 6.38174 1.24906 5.28747 1.24906C4.19319 1.24906 3.14374 1.68376 2.36997 2.45753C1.5962 3.2313 1.1615 4.28075 1.1615 5.37503C1.1615 6.4693 1.5962 7.51876 2.36997 8.29253L3.16497 9.08753L8.99997 14.9225L14.835 9.08753L15.63 8.29253C16.0132 7.90946 16.3172 7.45464 16.5247 6.95404C16.7321 6.45345 16.8388 5.91689 16.8388 5.37503C16.8388 4.83316 16.7321 4.2966 16.5247 3.79601C16.3172 3.29542 16.0132 2.84059 15.63 2.45753V2.45753Z" stroke="#3E3EAF" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        </a>
+                                    {% endif %}
+
+                                {% else %}
+                                        <svg width="18" height="16" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg"><path d="M15.63 2.45753C15.2469 2.07428 14.7921 1.77026 14.2915 1.56284C13.7909 1.35542 13.2543 1.24866 12.7125 1.24866C12.1706 1.24866 11.634 1.35542 11.1335 1.56284C10.6329 1.77026 10.178 2.07428 9.79497 2.45753L8.99997 3.25253L8.20497 2.45753C7.4312 1.68376 6.38174 1.24906 5.28747 1.24906C4.19319 1.24906 3.14374 1.68376 2.36997 2.45753C1.5962 3.2313 1.1615 4.28075 1.1615 5.37503C1.1615 6.4693 1.5962 7.51876 2.36997 8.29253L3.16497 9.08753L8.99997 14.9225L14.835 9.08753L15.63 8.29253C16.0132 7.90946 16.3172 7.45464 16.5247 6.95404C16.7321 6.45345 16.8388 5.91689 16.8388 5.37503C16.8388 4.83316 16.7321 4.2966 16.5247 3.79601C16.3172 3.29542 16.0132 2.84059 15.63 2.45753V2.45753Z" stroke="#3E3EAF" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                {% endif %}
+                            </button>
+                            <button class="bouton-mini bouton-partage" type="submit" title="Partager l'annonce">
+                                <span class="visually-hidden">Partager</span>
+                                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 6C14.7426 6 15.75 4.99264 15.75 3.75C15.75 2.50736 14.7426 1.5 13.5 1.5C12.2574 1.5 11.25 2.50736 11.25 3.75C11.25 4.99264 12.2574 6 13.5 6Z"  stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 11.25C5.74264 11.25 6.75 10.2426 6.75 9C6.75 7.75736 5.74264 6.75 4.5 6.75C3.25736 6.75 2.25 7.75736 2.25 9C2.25 10.2426 3.25736 11.25 4.5 11.25Z"  stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 16.5C14.7426 16.5 15.75 15.4926 15.75 14.25C15.75 13.0074 14.7426 12 13.5 12C12.2574 12 11.25 13.0074 11.25 14.25C11.25 15.4926 12.2574 16.5 13.5 16.5Z"  stroke-linecap="round" stroke-linejoin="round"/><path d="M6.4425 10.1324L11.565 13.1174" stroke-linecap="round" stroke-linejoin="round"/><path d="M11.5575 4.88245L6.4425 7.86745"  stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                        </div>
+                        <a class="bouton-cta" href="#reservation">
+                            Réserver
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+
+            <div class="conteneur-mobile">
+                <section class="reservation" id="reservation">
+                    <form action="" method="GET" class="reservation-form">
+                        <div class="label-input-text label-input-text-date  label-input-text-date-arrivee">
+                            <label class="label" for="arrivee">
+                                <span class="visually-hidden">Date d'arrivée</span>
+                                <svg width="17" height="19" viewBox="0 0 17 19" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.16669 0.5C5.44283 0.5 5.66669 0.723858 5.66669 1V2.16666H11.3333V1C11.3333 0.723858 11.5572 0.5 11.8333 0.5C12.1094 0.5 12.3333 0.723858 12.3333 1V2.16666H14.3333C15.5299 2.16666 16.5 3.13671 16.5 4.33333V16C16.5 17.1966 15.5299 18.1666 14.3333 18.1666H2.66667C1.47006 18.1666 0.5 17.1966 0.5 16V4.33333C0.5 3.13672 1.47005 2.16666 2.66667 2.16666H4.66669V1C4.66669 0.723858 4.89055 0.5 5.16669 0.5ZM4.66669 3.16666H2.66667C2.02233 3.16666 1.5 3.689 1.5 4.33333V7.16666H15.5V4.33333C15.5 3.68901 14.9777 3.16666 14.3333 3.16666H12.3333V4.33333C12.3333 4.60947 12.1094 4.83333 11.8333 4.83333C11.5572 4.83333 11.3333 4.60947 11.3333 4.33333V3.16666H5.66669V4.33333C5.66669 4.60947 5.44283 4.83333 5.16669 4.83333C4.89055 4.83333 4.66669 4.60947 4.66669 4.33333V3.16666ZM15.5 8.16666H1.5V16C1.5 16.6443 2.02232 17.1666 2.66667 17.1666H14.3333C14.9777 17.1666 15.5 16.6443 15.5 16V8.16666Z" /></svg>
+                            </label>
+                            <input id="start-date" class="search-input date" type="test" name="check-in" placeholder="Date d'arrivée" title="Arrivée">
+                        </div>
+                        <div class="label-input-text label-input-text-date label-input-text-date-depart">
+                            <label class="label" for="depart">
+                                <span class="visually-hidden">Date de départ</span>
+                                <svg width="17" height="19" viewBox="0 0 17 19" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.16669 0.5C5.44283 0.5 5.66669 0.723858 5.66669 1V2.16666H11.3333V1C11.3333 0.723858 11.5572 0.5 11.8333 0.5C12.1094 0.5 12.3333 0.723858 12.3333 1V2.16666H14.3333C15.5299 2.16666 16.5 3.13671 16.5 4.33333V16C16.5 17.1966 15.5299 18.1666 14.3333 18.1666H2.66667C1.47006 18.1666 0.5 17.1966 0.5 16V4.33333C0.5 3.13672 1.47005 2.16666 2.66667 2.16666H4.66669V1C4.66669 0.723858 4.89055 0.5 5.16669 0.5ZM4.66669 3.16666H2.66667C2.02233 3.16666 1.5 3.689 1.5 4.33333V7.16666H15.5V4.33333C15.5 3.68901 14.9777 3.16666 14.3333 3.16666H12.3333V4.33333C12.3333 4.60947 12.1094 4.83333 11.8333 4.83333C11.5572 4.83333 11.3333 4.60947 11.3333 4.33333V3.16666H5.66669V4.33333C5.66669 4.60947 5.44283 4.83333 5.16669 4.83333C4.89055 4.83333 4.66669 4.60947 4.66669 4.33333V3.16666ZM15.5 8.16666H1.5V16C1.5 16.6443 2.02232 17.1666 2.66667 17.1666H14.3333C14.9777 17.1666 15.5 16.6443 15.5 16V8.16666Z" /></svg>
+                            </label>
+                            <input id="end-date" class="search-input date" type="text" name="check-in" placeholder="Date de départ" title="Départ">
+                        </div>
+                        <div class="radios-temps">
+                            <legend class="radios-titre">Réservation</legend>
+                            <div class="label-input-radio">
+                                <input type="radio" id="heure" name="temps" value="heure"
+                                       checked>
+                                <label for="heure">à l'heure</label>
+                            </div>
+                            <div class="label-input-radio">
+                                <input type="radio" id="jour" name="temps" value="jour">
+                                <label for="jour">au jour</label>
+                            </div>
+                            <div class="label-input-radio">
+                                <input type="radio" id="mois" name="temps" value="mois">
+                                <label for="mois">au mois</label>
+                            </div>
+                        </div>
+                        <div class="prix-bloc">
+                            <span class="prix-description">À partir de</span>
+                            <strong class="prix-valeur">19<span class="devise">€</span></strong>
+                        </div>
+                        <button class="bouton-cta bouton-reserver" type="submit">
+                            Réserver
+                        </button>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!--Annonces similaires -->
+<div class="conteneur hidden-mobile-tab">
+    <aside class="cartes-annonces">
+        <h2 class="h2">Ça pourrait vous plaire</h2>
+        {% for post in postrepo %}
+             {% include 'components/_card.html.twig' %}
         {% endfor %}
-
-
+    </aside>
+</div><!-- fin conteneur -->
 
 
     {% endblock %}

@@ -24,15 +24,16 @@
 
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-8 mx-auto">
-                <h3 class="my-4 text-center">
-                    Rédiger une annonce
-                </h3>
-                {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
+    <main class="main">
+        <div class="conteneur">
+        <!--Annonces home -->
+            <section class="formulaire-simple">
+            <h2 class="h2">Je dépose mon annonce</h2>
 
-            </div>
-        </div>
-    </div>
+                {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
+            </section>
+        </div><!-- fin conteneur -->
+    </main>
+
+
 {% endblock %}

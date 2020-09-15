@@ -2,54 +2,60 @@
 
 {% block body %}
 
-    <div>
-        <h1>Home</h1>
-    </div>
-    <div class="last_post container">
+<!--Header / Barre de recherche de la home -->
+<header class="hero-search">
+    <div class="conteneur">
+        <p>Des milliers de places de stationnement à réserver</p>
+        <h1>Trouvez une place maintenant</h1>
+        <form action="" method="GET" class="search-bar" role="search">
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'  }}) }}
 
-        <div class="row">
-            <div class="col-4 mt-3">
-                {{ form(form) }}
+            <div class="label-input-text label-input-text-adresse">
+                {{ form_row(form.address, {'attr': {'class': 'search-input adresse'  }} ) }}
             </div>
-        </div>
 
-
-        <div class="row">
-            {% for post in posts %}
-                <div class="col-4 mt-3">
-                     {% include 'components/_card.html.twig' %}
+                <div class="label-input-text label-input-text-date">
+                {{ form_row(form.availability, {'attr': {'class': 'search-input date'  }} ) }}
                 </div>
-            {% endfor %}
 
-        </div>
-    </div>
 
-    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-        <h6 style="text-align: center">Suivez nous</h6>
-        <div style="text-align: center; margin-bottom: 1%; margin-top: 1%">
-            <!-- Links -->
-            <!-- Facebook -->
-            <a class="fb-ic">
-                <i class="fab fa-facebook-f white-text mr-4"> </i>
-            </a>
-            <!-- Twitter -->
-            <a class="tw-ic">
-                <i class="fab fa-twitter white-text mr-4"> </i>
-            </a>
-            <!-- Google +-->
-            <a class="gplus-ic">
-                <i class="fab fa-google-plus-g white-text mr-4"> </i>
-            </a>
-            <!--Linkedin -->
-            <a class="li-ic">
-                <i class="fab fa-linkedin-in white-text mr-4"> </i>
-            </a>
-            <!--Instagram-->
-            <a class="ins-ic">
-                <i class="fab fa-instagram white-text"> </i>
-            </a>
-        </div>
+            <div class="label-input-text label-input-text-date">
+                {{ form_row(form.availability_end, {'attr': {'class': 'search-input date'  }} ) }}
+            </div>
+
+            {{ form_end(form) }}
+
+        </form>
     </div>
+</header>
+
+<main class="main">
+    <div class="conteneur">
+        <!--Annonces home -->
+        <section class="cartes-annonces">
+
+            <h2 class="h2">Les dernières annonces</h2>
+                {% for post in posts %}
+                        {% include 'components/_card.html.twig' %}
+                {% endfor %}
+
+            <div class="bloc-cta">
+                <a href="{{ path('search_parking') }}" class="bouton-cta">
+                    Trouvez un parking
+                </a>
+            </div>
+        </section>
+
+        <!--Pub appli -->
+        <aside class="pub-appli hidden-mobile-tel">
+            <p>Garez vous<br> où que vous soyez<br> avec l’app <strong>Parkey</strong></p>
+            <div class="appstores">
+                <a href="https://www.apple.com/fr/ios/app-store/"><img src="{{ asset('assets/images/app_appstore.png') }}" alt="Télécharger Parkey sur l'App Store "></a>
+                <a href="https://play.google.com/store/apps"><img src="{{ asset('assets/images/apps_googleplay.png') }}" alt="Télécharger Parkey sur Google Play "></a>
+        </aside>
+    </div><!-- fin conteneur -->
+</main>
+
 
 
 {% endblock %}

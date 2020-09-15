@@ -25,7 +25,6 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -58,7 +57,7 @@ class DefaultController extends AbstractController
             ])
             ->add('availability_end', DateType::class, [
                 'label' => 'Date de départ',
-                'years' => range(date('Y'),date('Y')+5),
+                'years' => range(date('Y'),date('Y')+5)
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Rechercher'
@@ -79,7 +78,6 @@ class DefaultController extends AbstractController
             $result = $search->research($address, $availability, $availability_end);
 
             $em = $this->getDoctrine()->getManager();
-            $em->flush();
 
             # Récupération du formulaire
             $form = $this->createForm(Post::class, $posts)
@@ -87,7 +85,8 @@ class DefaultController extends AbstractController
 
             return $this->render("default/recherche.html.twig", [
                'result' => $result,
-                'posts' => $posts
+                'posts' => $posts,
+                'form' => $form->createView()
             ]);
 
         }
@@ -132,22 +131,23 @@ class DefaultController extends AbstractController
             ->add('content', TextareaType::class, [
                 'label' => 'Description de votre annonce'
             ])
-            ->add('active', CheckboxType::class, [
-                'label' => 'Afficher/Cacher'
-            ])
             ->add('image', FileType::class, [
                 'label' => false,
                 'attr' => [
                     'class' => 'dropify'
                 ]
             ])
-            ->add('availability', DateType::class, ['label' => 'Disponibilité', 'years' => range(date('Y'),date('Y')+2) ])
+            ->add('availability', DateType::class, [
+                'label' => 'Disponiilité',
+                'years' => range(date('Y'),date('Y')+2)
+            ])
 
             ->add('availability_end', DateType::class, [
-                'label' => 'Disponibilité fin',
+                'label' => 'Disponiilité fin',
                 'required' => false,
                 'years' => range(date('Y'),date('Y')+2)
             ])
+
 
             //Parking
             ->add('categorie', EntityType::class, [
@@ -212,8 +212,6 @@ class DefaultController extends AbstractController
             $post->setImage($postParking->image);
             $post->setAvailability($postParking->availability);
             $post->setAvailabilityEnd($postParking->availability_end);
-            $post->setActive($postParking->active);
-
             $post->setAddress($postParking->address);
             $post->setPriceDay($postParking->price_day);
             $post->setPriceHour($postParking->price_hour);
@@ -263,42 +261,7 @@ class DefaultController extends AbstractController
             'form' => $form->createView()
         ]);
 
-
     }
-    /**
-     * @Route("/favoris/ajout/{id}", name="ajout_favoris")
-     * @param Post $post
-     */
-    public function ajoutFavoris(post $post)
-    {
-        if(!$post){
-            throw new NotFoundHttpException('Pas d\'annonce trouvée');
-        }
-        $post->addFavori($this->getUser());
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($post);
-        $em->flush();
-        return $this->redirectToRoute('home');
-    }
-
-    /**
-     * @Route("/favoris/retrait/{id}", name="retrait_favoris")
-     * @param Post $post
-     */
-    public function retraitFavoris(Post $post)
-    {
-        if(!$post){
-            throw new NotFoundHttpException('Pas d\'annonce trouvée');
-        }
-        $post->removeFavori($this->getUser());
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($post);
-        $em->flush();
-        return $this->redirectToRoute('home');
-    }
-
 
     /**
      * Affiche les articles d'une catégorie
@@ -324,11 +287,8 @@ class DefaultController extends AbstractController
             'postrepo' => $postrepo
         ]);
     }
-
-
     /**
-     * Modification des données d'un utilisateur
-     * Modification des données d'un utilisateur
+    * Modification des données d'un utilisateur
      * @IsGranted("ROLE_USER", message="Vous n'avez pas les permissions nécessaires.")
      * @Route("/post/edit/{id}", name="user_post_edit", methods={"GET|POST"})
      * @param Request $request
@@ -356,6 +316,12 @@ class DefaultController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+
+
+
+
+
 
 }
 

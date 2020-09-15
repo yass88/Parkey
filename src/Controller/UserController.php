@@ -10,6 +10,7 @@ use App\Form\RegistrationForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -51,8 +52,10 @@ class UserController extends AbstractController
             ->add('nickname', TextType::class, ['label' => 'Pseudo'])
             ->add('email', EmailType::class, ['label' => 'Email'])
             ->add('password', PasswordType::class, ['label' => 'Mot de passe'])
-            ->add('birthday', BirthdayType::class, [
-                'placeholder' => 'Select a value',
+            ->add('birthday', DateType::class, [
+                'years' => range(date('Y')-18,date('Y')),
+                'label' => 'Date de naissance',
+                'placeholder' => 'Date de naissance',
             ])
             ->add('phone', TextType::class, ['label' => 'Votre numéro de télephone'])
             ->add('address', TextType::class, ['label' => 'Votre adresse'])
