@@ -155,6 +155,21 @@ class UserController extends AbstractController
         ]);
     }
 
+    //suppression UserController
+    /**
+     * @Route("/supprimer/{id}", name="user_profil_supprimer")
+     * @IsGranted ("ROLE_USER")
+     * @param User $user
+     */
+    public function supprimerUser(User $user)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+
+        $this->addFlash('message', 'Utilisateur supprimée avec succès');
+        return $this->redirectToRoute('app_logout');
+    }
 
 
 

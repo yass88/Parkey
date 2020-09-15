@@ -8,22 +8,8 @@
         <p>Des milliers de places de stationnement à réserver</p>
         <h1>Trouvez une place maintenant</h1>
         <form action="" method="GET" class="search-bar" role="search">
-            {{ form_start(form, {'attr': {'novalidate': 'novalidate'  }}) }}
+            {{ form(form, {'attr':{'novalidate':'novalidate'}}) }}
 
-            <div class="label-input-text label-input-text-adresse">
-                {{ form_row(form.address, {'attr': {'class': 'search-input adresse'  }} ) }}
-            </div>
-
-                <div class="label-input-text label-input-text-date">
-                {{ form_row(form.availability, {'attr': {'class': 'search-input date'  }} ) }}
-                </div>
-
-
-            <div class="label-input-text label-input-text-date">
-                {{ form_row(form.availability_end, {'attr': {'class': 'search-input date'  }} ) }}
-            </div>
-
-            {{ form_end(form) }}
 
         </form>
     </div>

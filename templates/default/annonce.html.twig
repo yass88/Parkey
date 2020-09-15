@@ -17,8 +17,8 @@
             <div class="annonce-header-texte">
                 <div class="conteneur-mobile">
                     <div class="bloc-titre">
-                        <h1 class="annonce-titre">Parking Lagrange Saint-Michel Notre Dame</h1>
-                        <p class="annonce-adresse">Passage des Trois Rivalets, 31204 Aix-en-Provence</p>
+                        <h1 class="annonce-titre">{{ post.title }}</h1>
+                        <p class="annonce-adresse">{{ post.address }}</p>
                         <div class="bloc-cta">
                             <button class="bouton-mini bouton-favoris" type="submit" title="Ajouter aux favoris">
                                 {% if is_granted("ROLE_USER") %}

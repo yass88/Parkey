@@ -25,6 +25,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -39,6 +40,7 @@ class DefaultController extends AbstractController
     public function home(Request $request)
     {
 
+        $results = [];
         #recupe 6 dernier articles
         $posts = $this->getDoctrine()
             ->getRepository(Post::class)
@@ -75,16 +77,12 @@ class DefaultController extends AbstractController
             $availability_end = $search['availability_end'];
 
             $search = $this->getDoctrine()->getRepository(Post::class);
-            $result = $search->research($address, $availability, $availability_end);
+            $results = $search->research($address, $availability, $availability_end);
 
             $em = $this->getDoctrine()->getManager();
 
-            # Récupération du formulaire
-            $form = $this->createForm(Post::class, $posts)
-                ->handleRequest($request);
-
             return $this->render("default/recherche.html.twig", [
-               'result' => $result,
+               'results' => $results,
                 'posts' => $posts,
                 'form' => $form->createView()
             ]);
@@ -95,6 +93,7 @@ class DefaultController extends AbstractController
         # Transmettre à la vue les données
         return $this->render("default/home.html.twig", [
             'posts' => $posts,
+            'results' => $results,
             'form' => $form->createView()
         ]);
     }
@@ -318,8 +317,52 @@ class DefaultController extends AbstractController
     }
 
 
+    /**
+     * @Route("/favoris/ajout/{id}", name="ajout_favoris")
+     * @param Post $post
+     */
+    public function ajoutFavoris(post $post)
+    {
+        if(!$post){
+            throw new NotFoundHttpException('Pas d\'annonce trouvée');
+        }
+        $post->addFavori($this->getUser());
 
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($post);
+        $em->flush();
+        return $this->redirectToRoute('home');
+    }
 
+    /**
+     * @Route("/favoris/retrait/{id}", name="retrait_favoris")
+     * @param Post $post
+     */
+    public function retraitFavoris(Post $post)
+    {
+        if(!$post){
+            throw new NotFoundHttpException('Pas d\'annonce trouvée');
+        }
+        $post->removeFavori($this->getUser());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($post);
+        $em->flush();
+        return $this->redirectToRoute('home');
+    }
+    /**
+    * @Route("/supprimer/{id}", name="user_post_supprimer")
+    * @param Post $post
+    */
+    public function supprimerPost(Post $post)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($post);
+        $em->flush();
+
+        $this->addFlash('message', 'Annonce supprimée avec succès');
+        return $this->redirectToRoute('supprimer');
+    }
 
 
 

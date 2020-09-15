@@ -2,72 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="beea85a7-7e1d-4615-8213-d3e26f79fc17" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/images/app_appstore.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/apps_googleplay.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/hero-searchbar-bkg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-favoris.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-menu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-rs-fb.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-rs-in.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-rs-insta.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-rs-tw.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-search-date.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-search-location.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-search-submit.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-share.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-vehicules-1-velo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-vehicules-2-moto.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-vehicules-3-auto.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-vehicules-4-utilitaire.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-vehicules-5-campingcar.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-vehicules-6-camion.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/logo-marqueur.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/logo_marqueur.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/logo_parkey_insigne.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/logo_parkey_monochrome.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/menu-close-black.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/menu-close-red.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/menu-close-white.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/menu-ham-black.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/menu-ham-red.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/menu-ham-white.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/pub.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/pub_photo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/users/aaa-5f602e4f2b3d4.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/users/ee-5f602d273c147.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/users/floflobob-5f5f86af9f3ee.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/users/ggg-5f602de404746.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/users/ggg-5f602dfd8e2bf.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/users/useruser-5f5f79c22721d.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Parkey.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Parkey.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/users/vivi-5f6092d58827e.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/sciprt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/_card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_card.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/_footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_footer.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/_nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_nav.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/annonce.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/annonce.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/home.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/recherche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/recherche.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/post/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/profil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/profil.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
