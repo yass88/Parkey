@@ -3,12 +3,20 @@
 {% block body %}
 
     {% block content %}
+        {% if is_granted("ROLE_USER")   %}
 
         {% if app.user and app.user.id == post.user.id %}
             <a class="nav-link" href="{{ path('user_post_edit' , {
                 'id' : post.id
             }) }}">Modifier mon annonce</a>
+
+            <a class="nav-link" href="{{ path('user_post_supprimer' , {
+                'id' : post.id
+            }) }}">supprimer mon annonce</a>
         {% endif %}
+
+        {% endif %}
+
 
     <h2>{{ post.title }}</h2>
     <p>{{ post.address }}</p>

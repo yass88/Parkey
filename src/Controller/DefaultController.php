@@ -356,6 +356,19 @@ class DefaultController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+    /**
+     * @Route("/supprimer/{id}", name="user_post_supprimer")
+     * @param Post $post
+     */
+    public function supprimerPost(Post $post)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($post);
+        $em->flush();
+
+        $this->addFlash('message', 'Annonce supprimée avec succès');
+        return $this->redirectToRoute('home');
+    }
 
 }
 

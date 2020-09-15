@@ -2,28 +2,74 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="353ee62f-1418-4f6f-896f-760ecb78c97a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Parking-2-5f5f206faee4d-jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Parking-5f5b8f7111bef-jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Parking-5f5b8f7dc4729-jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Parking-5f5e1dad5f774-jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Parking-5f5f2045da6e3-jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/posts/test-5f5e1d6e3168b-jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/posts/test3-5f5f58c984254-jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/AdminController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/PostController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/post/ajout.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/post/home.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/post/user-edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/post/user.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/app_appstore.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/apps_googleplay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/avatar-9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/hero-searchbar-bkg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-favoris.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-menu.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-rs-fb.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-rs-in.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-rs-insta.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-rs-tw.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-search-date.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-search-location.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-search-submit.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-share.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-vehicules-1-velo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-vehicules-2-moto.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-vehicules-3-auto.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-vehicules-4-utilitaire.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-vehicules-5-campingcar.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/icon-vehicules-6-camion.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/logo-marqueur.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/logo_marqueur.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/logo_parkey_insigne.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/logo_parkey_monochrome.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/menu-close-black.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/menu-close-red.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/menu-close-white.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/menu-ham-black.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/menu-ham-red.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/menu-ham-white.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/pub.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/pub_photo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/Parkingaaaa-5f5f894b3b3ed-jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/petit-garage-5f5fe2fba7d2f-png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/super-garage-5f5fb55f3e597-png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/super-garage-5f5fb5789201a-png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/super-garage-5f5fb6c14db30-png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/super-garage-5f5fb7346adc7-png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/super-garage-5f6075d6da17d-jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/super-garage-5f60779f52495-jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/super-garage-5f6077a879470-jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/super-place-de-luxe-5f5fb7a08a455-png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/super-place-de-luxe-5f5fb88b3d6de-png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/test-5f5f88c3e11f5-jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/posts/testaaaaa-5f5f898eb3ca3-jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/users/dydy-5f5fb4dcc60c7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/users/lolo-5f5fb8275cf05.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Parkey.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Parkey.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/flickity.pkgd.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/sciprt.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/fullscreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Post/PostParking.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Post/PostParking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/_card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_card.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PostForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PostForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/_footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_footer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/components/_nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_nav.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/annonce.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/annonce.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +214,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/post" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Parkey-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -201,6 +247,9 @@
       <workItem from="1599721989292" duration="5473000" />
       <workItem from="1599809934433" duration="13738000" />
       <workItem from="1599842869163" duration="16100000" />
+      <workItem from="1600107084820" duration="37000" />
+      <workItem from="1600107144111" duration="8642000" />
+      <workItem from="1600156292849" duration="1015000" />
     </task>
     <servers />
   </component>
@@ -223,15 +272,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1599571696100" />
-    <state x="134" y="218" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600004558061">
+    <state x="188" y="147" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600116512349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="134" y="218" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1600004558061" />
+    <state x="188" y="147" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1600116512349" />
     <state x="168" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599659727269" />
-    <state x="392" y="0" key="CommitChangelistDialog2" timestamp="1599827561596">
+    <state x="392" y="0" key="CommitChangelistDialog2" timestamp="1600100031742">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="392" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1599827561596" />
+    <state x="392" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1600100031742" />
     <state x="208" y="227" key="FileChooserDialogImpl" timestamp="1599740886693">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -242,10 +291,10 @@
     </state>
     <state x="164" y="201" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1599827889137" />
     <state x="205" y="254" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599571488428" />
-    <state x="369" y="113" key="SettingsEditor" timestamp="1600071069355">
+    <state x="369" y="113" key="SettingsEditor" timestamp="1600096879429">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="369" y="113" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1600071069355" />
+    <state x="369" y="113" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1600096879429" />
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599559253714" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1599226364817">
       <screen x="0" y="0" width="1920" height="1040" />

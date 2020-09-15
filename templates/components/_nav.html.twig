@@ -1,44 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="{{ path('home') }}"><img src="{{ asset('assets/images/logo_parkey.png') }}"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ path('search_parking') }}">Trouver un parking <span class="sr-only">(current)</span></a>
-            </li>
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            {% if is_granted('ROLE_USER') %}
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('post_new') }}">Déposer une annonce</a>
-            </li>
-            {% endif %}
-            {% endif %}
-
-
-            <li class="nav-item dropdown">
-
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Mon compte
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+<!--Navigation principale -->
+<nav class="navbar" aria-label="principale">
+    <div class="conteneur">
+        <a href="{{ path('home') }}" class="logo" title="Parkey, page d'accueil"><img src="{{ asset('assets/images/logo_parkey_insigne.svg') }}" alt="Parkey logo"> <span class="hidden-mobile-tel">Parkey</span></a>
+        <ul id="top-nav" class="navbar-menu">
+            <li><a href="{{ path('search_parking') }}">Réserver un parking</a></li>
+            <li><a href="{{ path('post_new') }}">Déposer une annonce</a></li>
+            <li class="bouton-mon-compte" id="toggle-compte">
+                <a href="#">Mon compte</a>
+                <ul id="sous-menu" class="sous-menu">
+                    <!-- Liens non connecté -->
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-
-                        {% if is_granted('ROLE_USER') %}
-                            <a class="nav-link" href="{{ path('user_profil') }}">Mon profil</a>
-                            <a class="nav-link" href="{{ path('user_profil_edit' ) }}">Modifier mon profil</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('admin_home_admin') }}">Gestion des utilisateurs</a></li>
+                            <li><a href="{{ path('home_post') }}">Gestion des annonces</a></li>
+                            <li><a href="{{ path('user_profil') }}">Profil admin</a></li>
                         {% endif %}
-                        <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-
+                        {% if is_granted('ROLE_USER') %}
+                            <li><a href="{{ path('user_profil') }}">Informations personnelles</a></li>
+                            <li><a href="{{ path('user_profil_edit') }}">Modifier mon profil</a></li>
+                        {% endif %}
+                        <li class="deconnecte"><a href="{{ path('app_logout') }}">Me déconnecter</a></li>
                     {% else %}
-                        <a class="nav-link" href="{{ path('user_register') }}">Inscription</a>
-                        <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-
+                        <li><a href="{{ path('app_login') }}">Me connecter</a></li>
+                        <li><a href="{{ path('user_register') }}">M'inscrire</a></li>
                     {% endif %}
-                </div>
+                </ul>
             </li>
         </ul>
-    </div>
+        <button aria-hidden="true" id="nav-icon" class="bouton-menu"><img src="{{ asset('assets/images/icon-menu.svg') }}" alt="Voir le menu"></button>
+    </div><!-- fin conteneur -->
 </nav>

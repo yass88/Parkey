@@ -7,6 +7,9 @@ namespace App\Form;
 
 use App\Entity\Post;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -25,6 +28,19 @@ class PostForm extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('content', TextareaType::class)
+          
+
+            ->add('availability', DateType::class, ['label' => 'Disponibilité', 'years' => range(date('Y'),date('Y')+2) ])
+
+            ->add('price_hour', NumberType::class, [
+                'label' => 'Location à l\'heure'
+            ])
+            ->add('price_day', NumberType::class, [
+                'label' => 'Location au jour'
+            ])
+            ->add('price_month', NumberType::class, [
+                'label' => 'Location au mois'
+            ])
             ->add('submit', SubmitType::class)
         ;
     }
